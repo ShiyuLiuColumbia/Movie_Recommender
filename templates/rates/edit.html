@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>EDit Review for movie <em>{{ selected_rate_info[0] }}</em></h1>
+<form method="POST" action="">
+	<textarea rows="15" cols="50" name="review" required>{{ selected_rate_info[2] }}</textarea>
+	<div>	
+		<label for="grade">Grade</label>
+		<input type="number" name="grade" id="grade" min="0" max="5" value="{{ selected_rate_info[1] }}">
+		<input type="submit" class="ml-5">
+	</div>
+</form>
+{% endblock content %}

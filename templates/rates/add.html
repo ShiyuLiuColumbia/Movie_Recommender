@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Add Review for movie <em>{{ selected_movie_info[0] }}</em></h1>
+<form method="POST" action="">
+	<textarea rows="15" cols="50" name="review" placeholder="Add Review Here" required></textarea>
+	<div>	
+		<label for="grade">Grade</label>
+		<input type="number" name="grade" id="grade" min="0" max="5" value="5">
+		<input type="submit" class="ml-5">
+	</div>
+</form>
+{% endblock content %}

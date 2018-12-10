@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Movie Name: {{ selected_movie_info['name'] }}</h1>
+    <div class="img-thumbnail" style="width:60%">
+        <a href="https://www.imdb.com/title/{{ selected_movie_link[0] }}"><img src="https://image.tmdb.org/t/p/w500/{{ selected_movie_info['poster_path'] }}" style="width:100%"></a>
+        
+    </div>
+    <ul>
+        <li>Language: {{ selected_movie_info['language'] }}</li>
+        <li>Runtime: {{ selected_movie_info['runtime']}} minutes</li>
+        <li>Release Date: {{ selected_movie_info['release_date'] }}</li>
+        <li>Revenue: $ {{ selected_movie_info['revenue'] }}</li>
+        <li>Genre: 
+            {% for genre in selected_movie_genre %}
+            {{ genre[0] }}
+            {% endfor%}
+        </li>
+        <li>Actors: 
+            <ul>
+            {% for actor in selected_movie_castInfo %} 
+            <li><a href="/actors/{{ actor[0] }}">{{ actor[2] }}</a> ---- Act as {{ actor[1] }}</li>  
+
+            {% endfor %}
+            </ul>
+        </li>
+        <li>Directors: 
+            <ul>
+            {% for director in selected_movie_directorInfo %} 
+            <li>Director Name: <a href="/directors/{{ director[0] }}">{{ director[1] }}</a></li>  
+            {% endfor %}
+            </ul>
+        </li>
+        <li><a href="https://www.imdb.com/title/{{ selected_movie_link[0] }}">See on IMDB</a></li>
+    </ul>
+    <div>
+        {% if selected_user_movie_rateInfo is not none %}
+        <form class="form-inline" action="{{ url_for('rate_edit', id = selected_movie_info['mov_id']) }}" method="GET" style="display:inline-block">
+            <input type="submit" class="btn btn-sm btn-warning" value="Edit Your Review">
+        </form>
+        <form class="form-inline" action="/movies/{{ selected_movie_info['mov_id'] }}/rates/delete" method="POST" style="display:inline-block">
+            <input type="submit" class="btn btn-sm btn-danger" value="Delete Your Review" onclick="return confirm('Are you sure?');">
+        </form>
+        {% else %}
+        <span><a href="/movies/{{ selected_movie_info['mov_id'] }}/rates" class="btn btn-sm btn-primary">Add Your Own Review</a></span>
+        {% endif %}
+        <div class="card"> 
+            <div class="card-body">
+                {% if selected_movie_rateInfo|length == 0 %}
+                <p class="card-text">There is no review for this movie now. Add your review!</p>
+                {% else %}
+                {% for rate in selected_movie_rateInfo %}
+                <h5 class="card-title">User's Name: {{ rate[3] }}(grade:{{ rate[0] }})</h5>
+                <p class="card-text">{{ rate[1] }}</p>
+                <hr>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--
+	<div class="jumbotron">
+		<h1 class="display-4">Welcome to our MovieSearch app</h1>
+		<p class="lead">Course Project 1 of CSOR W4111(Intro to Database) at Columbia University</p>
+		<hr class="my-4">
+		<a class="btn btn-primary btn-lg" href="{{url_for('movie_index')}}" role="button">View</a>
+	</div>
+//-->
+<main role="main" class="container">
+		<h1 class="display-4">Welcome to our MovieSearch App</h1>
+		<p class="lead">Search and rate thousands of movies populated by real world data from IMDB and TMDB.</p>
+		<hr class="my-4">
+		<a class="btn btn-primary btn-lg" href="{{url_for('movie_index')}}" role="button">View</a>
+</main>
+{% endblock content %}

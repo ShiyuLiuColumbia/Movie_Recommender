@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h1>Name: {{ selected_user_info['name'] }}</h1>
+    <ul>
+    	<li>Username: {{ selected_user_info['username'] }}</li>
+    	<li>Userid: {{ selected_user_info['user_id'] }}</li>
+        <li>Gender: {{ selected_user_info['gender'] }}</li>
+        <li>Birthday: {{ selected_user_info['birthday'] }}</li>
+        <li>Most Like Genre: {{ selected_user_genreInfo[2] }}</li>
+        <li>Rate for:
+        	<ul>
+        		{% for rate in selected_user_rateInfo %}
+        		<li>Movie Name: <a href="/movies/{{ rate[0] }}">{{ rate[1] }}</a> -- Grade: {{ rate[2] }} -- Review: {{ rate[3] }}</li>
+        		{% endfor %}
+        	</ul>
+        </li>
+    </ul>
+{% endblock content %}

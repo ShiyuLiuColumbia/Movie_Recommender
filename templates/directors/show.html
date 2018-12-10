@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h1>Director Name: {{ selected_director_info['name'] }}</h1>
+    <ul>
+        <li>Gender: {{ selected_director_info['gender'] }}</li>
+        <li>Direct For: 
+            <ul>
+            {% for movie in selected_director_movieInfo %} 
+            <li>Movie Name: <a href="/movies/{{ movie[0] }}">{{ movie[1] }}</a>
+            {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
+{% endblock content %}

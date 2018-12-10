@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h1>Actor Name: {{ selected_actor_info['name'] }}</h1>
+    <ul>
+        <li>Gender: {{ selected_actor_info['gender'] }}</li>
+        <li>Act For: 
+            <ul>
+            {% for movie in selected_actor_movieInfo %} 
+            <li>Movie Name: <a href="/movies/{{ movie[0] }}">{{ movie[1] }}</a> ---- Act As: {{ movie[2] }}</li>  
+            {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
+{% endblock content %}

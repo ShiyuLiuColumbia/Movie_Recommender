@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+		<h2>Search movies by genre</h2>
+		<form method="POST" action="/genre">
+			<input type="checkbox" name="genre" value="Action"> Action<br>
+			<input type="checkbox" name="genre" value="Adventure"> Adventure<br>
+			<input type="checkbox" name="genre" value="Animation"> Animation<br>
+			<input type="checkbox" name="genre" value="Comedy"> Comedy<br>
+			<input type="checkbox" name="genre" value="Crime"> Crime<br>
+			<input type="checkbox" name="genre" value="Documentary"> Documentary<br>
+			<input type="checkbox" name="genre" value="Drama"> Drama<br>
+			<input type="checkbox" name="genre" value="Family"> Family<br>
+			<input type="checkbox" name="genre" value="Fantasy"> Fantasy<br>
+			<input type="checkbox" name="genre" value="Foreign"> Foreign<br>
+			<input type="checkbox" name="genre" value="History"> History<br>
+			<input type="checkbox" name="genre" value="Music"> Music<br>
+			<input type="checkbox" name="genre" value="Mystery"> Mystery<br>
+			<input type="checkbox" name="genre" value="Romance"> Romance<br>
+			<input type="checkbox" name="genre" value="Science Fiction"> Science Fiction<br>
+			<input type="checkbox" name="genre" value="Thriller"> Thriller<br>
+			<input type="checkbox" name="genre" value="TV Movie"> TV Movie<br>
+			<input type="checkbox" name="genre" value="War"> War<br>
+			<input type="checkbox" name="genre" value="Western"> Western<br>
+			<input type="submit" value="Search" class="btn btn-outline-success">
+		</form>
+		{% if search_content and results%}
+		<div>This is the 30 movies based on genre {{search_content}}</div>
+		<div>
+				{% for n in results %}
+				<div>{{n}}</div>
+				{% endfor %}
+		</div>
+		{% endif %}
+{% endblock content %}

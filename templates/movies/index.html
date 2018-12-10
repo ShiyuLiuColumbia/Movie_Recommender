@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h1>{{title}} {{search_content}}</h1>
+	<div class="row">
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			<a href="/movies/{{ movies[0]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[0]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[0]['mov_id'] }}">{{ movies[0]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			<a href="/movies/{{ movies[1]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[1]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[1]['mov_id'] }}">{{ movies[1]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[2]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[2]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[2]['mov_id'] }}">{{ movies[2]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[3]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[3]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[3]['mov_id'] }}">{{ movies[3]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[4]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[4]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[4]['mov_id'] }}">{{ movies[4]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[5]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[5]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[5]['mov_id'] }}">{{ movies[5]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[6]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[6]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[6]['mov_id'] }}">{{ movies[6]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[7]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[7]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[7]['mov_id'] }}">{{ movies[7]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[8]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[8]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[8]['mov_id'] }}">{{ movies[8]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[9]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[9]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[9]['mov_id'] }}">{{ movies[9]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[10]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[10]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[10]['mov_id'] }}">{{ movies[10]['name'] }}</a>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
+			
+			<a href="/movies/{{ movies[11]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[11]['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movies[11]['mov_id'] }}">{{ movies[11]['name'] }}</a>
+		</div>
+
+
+
+
+
+	</div>
+
+{% endblock content %}
