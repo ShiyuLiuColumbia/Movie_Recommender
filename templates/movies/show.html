@@ -5,6 +5,7 @@
         <a href="https://www.imdb.com/title/{{ selected_movie_link[0] }}"><img src="https://image.tmdb.org/t/p/w500/{{ selected_movie_info['poster_path'] }}" style="width:100%"></a>
         
     </div>
+    <p>Overview: {{ selected_movie_info['overview'] }}</p>
     <ul>
         <li>Language: {{ selected_movie_info['language'] }}</li>
         <li>Runtime: {{ selected_movie_info['runtime']}} minutes</li>
@@ -32,7 +33,135 @@
         </li>
         <li><a href="https://www.imdb.com/title/{{ selected_movie_link[0] }}">See on IMDB</a></li>
     </ul>
-    <div>
+
+    <!-- d3.js view -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+        var graphData = {{ data.chart_data | safe }}
+
+        /// 添加SVG画布
+
+                var dataset = graphData;
+                var width = 600;    // SVG的宽度
+                var height = 400;   // SVG的长度
+                var svg = d3.select("div.container")
+                            .append('svg')  // body中添加SVG
+                            .attr('width', width)
+                            .attr('height', height);
+                // // background color
+                // svg.append("rect")
+                // .attr("width", "100%")
+                // .attr("height", "100%")
+                // .attr("fill", "rgb(232,221,203)");
+
+                var padding = {top: 20, right: 20, bottom: 20, left: 30};
+
+                // 定义数据与比例尺
+                var xAxisWidth = width;   //x轴宽度
+                var yAxisWidth = height*0.8;   //y轴宽度
+                var xScale = d3.scale.ordinal() //x轴比例尺（序数比例尺）
+                                .domain([1,2,3,4,5])
+                                .rangeRoundBands([0,xAxisWidth],0.4);
+                var yScale = d3.scale.linear()  //y轴比例尺（线性比例尺）
+                                .domain([0,d3.max(dataset)])
+                                .range([0,yAxisWidth]);
+
+                // 添加矩形和文字元素
+                var rect = svg.selectAll("rect")
+                                .data(dataset)
+                                .enter()  //获取enter部分
+                                .append("rect") //添加rect元素，使其与绑定数组的长度一致
+                                .attr("fill","rgb(3,101,100)")
+                                .attr("x",function(d,i){    //设置X坐标
+                                    // return padding.left + i * rectStep;
+                                    return padding.left + xScale(i+1);
+
+                                })
+                                .attr("y",function(d,i){    //设置Y坐标
+                                    // return height - padding.bottom - d;
+                                    return height - padding.bottom - yScale(d);
+                                })
+                                .attr("width",xScale.rangeBand())    //设置矩形宽度
+                                .attr("height",function(d){
+                                    return yScale(d);
+                                // .ease("bounce")
+                                })
+                var text = svg.selectAll(text)
+                                .data(dataset)
+                                .enter()
+                                .append("text")
+                                .attr("fill","rgb(232,221,203)")
+                                .attr("font-size","14px")
+                                .attr("text-anchor","middle")
+                                .attr("x",function(d,i){    //与矩形的X坐标一样
+                                    return padding.left + xScale(i+1);
+                                })
+                                .attr("y",function(d){
+                                    return height - padding.bottom - yScale(d);
+                                })
+                                .attr('dx', xScale.rangeBand()/2)   //x轴相对平移距离
+
+                                .attr('dy', "1em")  //em单位表示的是当前文字所占一行的高度
+                                .text(function(d){  //要显示的文字内容
+                                    return d+"movies";
+                                });
+                // add title
+                svg.append("text")
+               .attr("transform", "translate(100,0)")
+               .attr("x", 50)
+               .attr("y", 50)
+               .attr("fill","rgb(3,101,100)")
+               .attr("font-size", "24px")
+               .text("This Movie's Rating Distribution")
+               // // add x-label
+               // svg.append("g")
+               // .attr("transform", "translate(0," + height + ")")
+               // .call(d3.axisBottom(xScale))
+               // .append("text")
+               // .attr("y", height - 250)
+               // .attr("x", width - 100)
+               // .attr("text-anchor", "end")
+               // .attr("stroke", "black")
+               // .text("Your Rating");
+               // // add y-label
+               // svg.append("g")
+               // .call(d3.axisLeft(yScale)
+               // .tickFormat(function(d){
+               //     return "$" + d;
+               // }).ticks(10))
+               // .append("text")
+               // .attr("transform", "rotate(-90)")
+               // .attr("y", 6)
+               // .attr("dy", "-5.1em")
+               // .attr("text-anchor", "end")
+               // .attr("stroke", "black")
+               // .text("Number of Movies Rated");
+
+                // 定义坐标轴
+                var xAxis = d3.svg.axis()
+                            .scale(xScale)
+                            .orient("bottom");
+                yScale.range([yAxisWidth,0]);
+                var yAxis = d3.svg.axis()
+                            .scale(yScale)
+                            .orient("left");
+                            
+                
+
+                svg.append("g")
+                  .attr("class","axis")
+                  .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")
+
+                  .call(xAxis);
+
+                svg.append("g")
+                  .attr("class","axis")
+                  .attr("transform","translate(" + padding.left + "," + (height - padding.bottom - yAxisWidth) + ")")
+                  .call(yAxis);
+    </script>
+    </div>
+
+
         {% if selected_user_movie_rateInfo is not none %}
         <form class="form-inline" action="{{ url_for('rate_edit', id = selected_movie_info['mov_id']) }}" method="GET" style="display:inline-block">
             <input type="submit" class="btn btn-sm btn-warning" value="Edit Your Review">

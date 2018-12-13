@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1>{{title}} {{search_content}}</h1>
+	<h1>Top 12 movies with highest wighted-mean scores. Please login or sigh up to see more effective recommendation</h1>
 	<div class="row">
 		<div class="col-lg-3 col-md-4 col-sm-6 img-thumbnail">
 			<a href="/movies/{{ movies[0]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[0]['poster_path'] }}" style="width:100%"></a>
@@ -60,11 +60,6 @@
 			<a href="/movies/{{ movies[11]['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movies[11]['poster_path'] }}" style="width:100%"></a>
 			<a href="/movies/{{ movies[11]['mov_id'] }}">{{ movies[11]['name'] }}</a>
 		</div>
-
-
-
-
-
 	</div>
 
 {% endblock content %}

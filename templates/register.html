@@ -1,11 +1,32 @@
 {% extends "layout.html" %}
 {% block content %}
     <form method="post" class="form-group">
-    	<legend class="border-bottom mb-4">Sign Up</legend>
+    	<legend class="border-bottom mb-4">Sign Up - Please rate all the movies</legend>
         <label for="username" class="form-control-label">Username</label>
         <input name="username" id="username" class="form-control form-control-lg" required>
         <label for="password" class="form-control-label">Password</label>
         <input type="password" name="password" id="password" class="form-control form-control-lg" required>
+        <hr>
+        <div class="row">
+	 		{% for movie in movies_for_rate %}
+			<div class="col-sm-3 img-thumbnail">
+				<a href="/movies/{{ movie['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" style="width:100%"></a>
+				<a href="/movies/{{ movie['mov_id'] }}">{{ movie['name'] }}</a>
+				<div>
+					<label for="inputState">rate:</label>
+					<select id="inputState" class="form-control custom-select" name="movie{{ loop.index }}">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option selected>5</option>
+		        	</select>
+				</div>
+
+			</div>
+			{% endfor %}       	
+        </div>
         <input type="submit" value="Sign Up" class="btn btn-primary mt-2">
     </form>
+
 {% endblock content %}

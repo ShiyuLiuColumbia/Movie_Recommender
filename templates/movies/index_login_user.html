@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>These are Movies recommended based on your ratings</h1>
+<div class="row">
+	<div class=" col-sm-4">
+		<h5>Spark ALS</h5>
+		{% for movie in movies %}
+			<div class="img-thumbnail">
+			<a href="/movies/{{ movie['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movie['mov_id'] }}">{{ movie['name'] }}</a>
+			</div>
+		{% endfor %}
+	</div>
+	<div class=" col-sm-4">
+		<h5>TF-IDF based on movies' overview</h5>
+		{% for movie in movies1 %}
+			<div class="img-thumbnail">
+			<a href="/movies/{{ movie['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movie['mov_id'] }}">{{ movie['name'] }}</a>
+			</div>
+		{% endfor %}
+	</div>
+	<div class=" col-sm-4">
+		<h5>Top movies recommendation based on movies' ratings</h5>
+		{% for movie in movies2 %}
+			<div class="img-thumbnail">
+			<a href="/movies/{{ movie['mov_id'] }}"><img src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" style="width:100%"></a>
+			<a href="/movies/{{ movie['mov_id'] }}">{{ movie['name'] }}</a>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
+
+{% endblock content %} 
