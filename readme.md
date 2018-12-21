@@ -5,7 +5,7 @@ This is a Movie Recommendation System mainly based on Flask, PostgreSQL and Spar
 - The recommendation part uses three methods to do the recommendation. 1. find highest weighted mean of movie ratings 2. do TF-IDF on movie overviews and find top movies with highest cosine-similarity(content based) 3. Spark ALS algorithm(a kind of collaborative filtering user-user recommendation).
 
 ### 2. Dataset
-We use Netflix Prize data(https://www.kaggle.com/netflix-inc/netflix-prize-data) to do the algorithm analysis. After analyzing the features of each algorithms, we choose to use MovieLens dataset(https://www.kaggle.com/rounakbanik/the-movies-dataset) since it has more movie information.
+We use [Netflix Prize data](https://www.kaggle.com/netflix-inc/netflix-prize-data) to do the algorithm analysis. After analyzing the features of each algorithms, we choose to use [MovieLens dataset](https://www.kaggle.com/rounakbanik/the-movies-dataset) since it has more movie information.
 
 ### 3. Software Package Installation
 
@@ -26,7 +26,7 @@ All packages list below can be installed directly by Anaconda.
  - data_preprocessing: preprocess data and insert table into database.
  - templates: web pages.
  - app.py: flask backend.
- - recomEngine.py: three recommendation algorithms use in our web application.
+ - recomEngine.py: three recommendation algorithms used in our web application.
 
 ### 5. Steps to run our application
 
