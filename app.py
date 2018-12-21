@@ -38,9 +38,9 @@ top_movie3 = recomEngine.weighted_mean_recommendation(df, 5)
 
 
 
-# #=============build the tf-idf model =================
-df_movie = pd.read_sql_query('select * from "movie"',con=engine)
-similarity = recomEngine.tfidf_buildModel(df_movie)
+# # #=============build the tf-idf model =================
+# df_movie = pd.read_sql_query('select * from "movie"',con=engine)
+# similarity = recomEngine.tfidf_buildModel(df_movie)
 
 
 
