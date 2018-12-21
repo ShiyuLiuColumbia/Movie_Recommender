@@ -23,7 +23,7 @@ All packages list below can be installed directly by Anaconda.
 
 ### 4. Directory
  - algorithm_analysis: The seven recommendation algorithms we compared in our project. 
- - data_preprocessing: data preprocess and insert table into database.
+ - data_preprocessing: preprocess data and insert table into database.
  - templates: web pages.
  - app.py: flask backend.
  - recomEngine.py: three recommendation algorithms use in our web application.
